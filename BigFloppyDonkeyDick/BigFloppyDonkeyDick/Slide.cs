@@ -30,7 +30,7 @@ namespace BigFloppyDonkeyDick
 
         public int Except(Slide other)
         {
-            return Tags.Except(other.Tags).Count();
+            return Math.Min(Tags.Except(other.Tags).Count(), other.Tags.Except(Tags).Count());
         }
 
         public int Quality(Slide other)
