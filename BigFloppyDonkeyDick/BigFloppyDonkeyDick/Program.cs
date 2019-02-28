@@ -44,6 +44,7 @@ namespace BigFloppyDonkeyDick
 						if (tagsCount > acceptNumber)
 						{
 							slides.Add(slide);
+							break;
 						}
 	                }
 					
