@@ -33,7 +33,7 @@ namespace BigFloppyDonkeyDick
 
             for (int i = 0; i < verticalPhotos.Count(); i++)
             {
-                for (int j = i; j < verticalPhotos.Count(); j++)
+                for (int j = i+1; j < verticalPhotos.Count(); j++)
                 {
 	                var slide = verticalPhotos[i].Union(verticalPhotos[j]);
 	                int tagsCount = slide.Tags.Count();
@@ -44,6 +44,9 @@ namespace BigFloppyDonkeyDick
 						if (tagsCount > acceptNumber)
 						{
 							slides.Add(slide);
+							verticalPhotos.Remove(verticalPhotos[j]);
+							verticalPhotos.Remove(verticalPhotos[i]);
+							i--;
 							break;
 						}
 	                }
@@ -51,17 +54,10 @@ namespace BigFloppyDonkeyDick
                 }
             }
 
+            var horizontalSlides = result.Where(p => p.Orientation == PhotoOrientation.Horizontal)
+	            .Select(p => new Slide(new Photo[] {p}));
 
-            foreach (Photo photo in result)
-            {
-                if (photo.Orientation == PhotoOrientation.Horizontal)
-                {
-                    List<Photo>  photosforSlide = new List<Photo>();
-                    photosforSlide.Add(photo);
-                    slides.Add(new Slide(photosforSlide));
-                }
-
-            }
+			slides.AddRange(horizontalSlides);
 
 
 			var writer = new OutputFileWriter();
