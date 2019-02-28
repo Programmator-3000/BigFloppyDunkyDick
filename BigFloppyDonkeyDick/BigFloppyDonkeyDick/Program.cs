@@ -16,7 +16,21 @@ namespace BigFloppyDonkeyDick
 			var reader = new InputFileReader();
 	        var result = reader.ReadFile(path);
 
-            List<Slide> Slides = new List<Slide>();
+            List<Slide> slides = new List<Slide>();
+
+            int maxTegsCountInHorizontalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Horizontal)
+                .Max(s => s.Tags.Count());
+            var verticalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Vertical)
+                .OrderByDescending(p => p.Tags.Count());
+
+            for (int i = 0; i < verticalPhotos.Count(); i++)
+            {
+                for (int j = i; j < verticalPhotos.Count(); j++)
+                {
+                    var slide = 
+                }
+            }
+
 
             foreach (Photo photo in result)
             {
@@ -24,8 +38,9 @@ namespace BigFloppyDonkeyDick
                 {
                     List<Photo>  photosforSlide = new List<Photo>();
                     photosforSlide.Add(photo);
-                    Slides.Add(new Slide(photosforSlide));
+                    slides.Add(new Slide(photosforSlide));
                 }
+
             }
 
 
