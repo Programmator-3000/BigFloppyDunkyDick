@@ -10,6 +10,10 @@ namespace BigFloppyDonkeyDick
     {
         static void Main(string[] args)
         {
+            int a = 10;
+            int f = 10;
+            var t = (a - f).Clamp(-1,1);
+
 	        string path = "a_example.txt";
 	        string outputPath = "a_example_output.txt";
 
@@ -48,6 +52,11 @@ namespace BigFloppyDonkeyDick
 			writer.WriteOutput(Slides, outputPath);
 
             Console.ReadLine();
+        }
+
+        public static void PerformSearch(List<Slide> slides)
+        {
+            slides.Sort((x, y) => (x.Tags.Count()-y.Tags.Count()).Clamp(-1,1));
         }
     }
 }
