@@ -9,5 +9,10 @@ namespace BigFloppyDonkeyDick
     class Slide
     {
         IEnumerable<Photo> Photos { get; set; }
+
+        public Slide(IEnumerable<Photo> ph)
+        {
+            Photos = ph;
+        }
     }
 }
