@@ -14,7 +14,7 @@ namespace BigFloppyDonkeyDick
 
 			var reader = new InputFileReader();
 	        var result = reader.ReadFile(path);
-
+            List<Slide> Slides = new List<Slide>();
             Console.ReadLine();
         }
     }
