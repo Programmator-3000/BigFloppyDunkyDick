@@ -10,7 +10,10 @@ namespace BigFloppyDonkeyDick
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, Dick!");
+	        string path = "a_example.txt";
+
+			var reader = new InputFileReader();
+	        var result = reader.ReadFile(path);
 
             Console.ReadLine();
         }
