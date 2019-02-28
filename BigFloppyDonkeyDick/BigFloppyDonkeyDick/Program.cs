@@ -24,6 +24,7 @@ namespace BigFloppyDonkeyDick
 
             int maxTegsCountInHorizontalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Horizontal)
                 .Max(s => s.Tags.Count());
+
             var verticalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Vertical)
                 .OrderByDescending(p => p.Tags.Count())
                 .ToList();
@@ -35,6 +36,16 @@ namespace BigFloppyDonkeyDick
                 for (int j = i; j < verticalPhotos.Count(); j++)
                 {
 	                var slide = verticalPhotos[i].Union(verticalPhotos[j]);
+	                int tagsCount = slide.Tags.Count();
+
+					if (tagsCount <= exitNumber)
+	                {
+						var acceptNumber = (verticalPhotos[i].Tags.Count() + verticalPhotos[j].Tags.Count()) * 1.5d / 2.0d;
+						if (tagsCount > acceptNumber)
+						{
+							slides.Add(slide);
+						}
+	                }
 					
                 }
             }
@@ -53,7 +64,7 @@ namespace BigFloppyDonkeyDick
 
 
 			var writer = new OutputFileWriter();
-			writer.WriteOutput(Slides, outputPath);
+			writer.WriteOutput(slides, outputPath);
 
             Console.ReadLine();
         }
