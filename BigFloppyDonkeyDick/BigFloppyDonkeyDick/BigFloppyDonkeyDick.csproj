@@ -46,6 +46,7 @@
     <Compile Include="InputFileReader.cs" />
     <Compile Include="MathUtilityExtension.cs" />
     <Compile Include="OutputFileWriter.cs" />
+    <Compile Include="OutputReader.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="PhotoOrientation.cs" />
     <Compile Include="Program.cs" />

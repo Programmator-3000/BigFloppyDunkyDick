@@ -32,7 +32,7 @@ namespace BigFloppyDonkeyDick
 			var reader = new InputFileReader();
 	        var result = reader.ReadFile(path);
 
-            List<Slide> slides = new List<Slide>();
+			/*List<Slide> slides = new List<Slide>();
 
             var horizontalPhotos = result.Where(p => p.Orientation == PhotoOrientation.Horizontal).ToList();
 
@@ -72,11 +72,14 @@ namespace BigFloppyDonkeyDick
             var horizontalSlides = horizontalPhotos
 	            .Select(p => new Slide(new Photo[] {p}));
 
-			slides.AddRange(horizontalSlides);
+			slides.AddRange(horizontalSlides);*/
 
+			var outputReader = new OutputReader();
+			var slides = outputReader.Read(result, outputPath);
 
 			var writer = new OutputFileWriter();
 			writer.WriteOutput(slides, outputPath);
+
         }
 
         public static void PerformSearch(List<Slide> slides)
