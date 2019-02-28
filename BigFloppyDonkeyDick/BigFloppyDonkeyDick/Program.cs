@@ -10,6 +10,9 @@ namespace BigFloppyDonkeyDick
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello, Dick!");
+
+            Console.ReadLine();
         }
     }
 }
