@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BigFloppyDonkeyDick
 {
-    class Slide
+    public class Slide
     {
-        IEnumerable<Photo> Photos { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

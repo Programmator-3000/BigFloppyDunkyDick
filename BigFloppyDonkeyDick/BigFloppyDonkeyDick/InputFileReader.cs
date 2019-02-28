@@ -13,6 +13,7 @@ namespace BigFloppyDonkeyDick
 			var result = new List<Photo>();
 			using (StreamReader sr = File.OpenText(path))
 			{
+				int i = 0;
 				string s = sr.ReadLine(); //skip number of rows
 
 				while ((s = sr.ReadLine()) != null)
@@ -20,11 +21,13 @@ namespace BigFloppyDonkeyDick
 					var split = s.Split(' ');
 					var photo = new Photo()
 					{
+						Id = i,
 						Orientation = split[0] == "H" ? PhotoOrientation.Horizontal : PhotoOrientation.Vertical,
 						Tags = split.Skip(2).ToList()
 					};
 
 					result.Add(photo);
+					i++;
 				}
 			}
 

@@ -8,6 +8,7 @@ namespace BigFloppyDonkeyDick
 {
 	public class Photo
 	{
+		public int Id { get; set; }
 		public PhotoOrientation Orientation { get; set; } 
 		public IEnumerable<string> Tags { get; set; }
 	}
