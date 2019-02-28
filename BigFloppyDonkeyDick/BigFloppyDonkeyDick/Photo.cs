@@ -17,6 +17,14 @@ namespace BigFloppyDonkeyDick
             return Tags.Union(other.Tags).Count();
         }
 
+        public Slide Union(Photo photo)
+        {
+			return new Slide(new List<Photo>()
+			{
+				this, photo
+			});
+        }
+
         public int Intersect(Slide other)
         {
             return Tags.Intersect(other.Tags).Count();

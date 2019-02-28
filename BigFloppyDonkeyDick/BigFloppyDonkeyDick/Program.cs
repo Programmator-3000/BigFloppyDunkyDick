@@ -21,13 +21,17 @@ namespace BigFloppyDonkeyDick
             int maxTegsCountInHorizontalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Horizontal)
                 .Max(s => s.Tags.Count());
             var verticalPhotos = result.Where(s => s.Orientation == PhotoOrientation.Vertical)
-                .OrderByDescending(p => p.Tags.Count());
+                .OrderByDescending(p => p.Tags.Count())
+                .ToList();
+
+            var exitNumber = Math.Round(maxTegsCountInHorizontalPhotos * 1.5d);
 
             for (int i = 0; i < verticalPhotos.Count(); i++)
             {
                 for (int j = i; j < verticalPhotos.Count(); j++)
                 {
-                    var slide = 
+	                var slide = verticalPhotos[i].Union(verticalPhotos[j]);
+					
                 }
             }
 
