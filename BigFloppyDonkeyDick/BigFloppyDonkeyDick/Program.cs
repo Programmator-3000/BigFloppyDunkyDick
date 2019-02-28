@@ -68,8 +68,13 @@ namespace BigFloppyDonkeyDick
 					
                 }
             }
+            for (int i = 0; i < verticalPhotos.Count-1; i=i+2)
+            {
+                var slide = verticalPhotos[i].Union(verticalPhotos[i+1]);
+                    slides.Add(slide);
+            }
 
-            var horizontalSlides = horizontalPhotos
+                    var horizontalSlides = horizontalPhotos
 	            .Select(p => new Slide(new Photo[] {p}));
 
 			slides.AddRange(horizontalSlides);
