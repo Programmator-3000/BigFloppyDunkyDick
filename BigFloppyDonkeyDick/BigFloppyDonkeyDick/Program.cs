@@ -16,11 +16,21 @@ namespace BigFloppyDonkeyDick
 			var reader = new InputFileReader();
 	        var result = reader.ReadFile(path);
 
+            List<Slide> Slides = new List<Slide>();
 
-	        var slides = new List<Slide>();
+            foreach (Photo photo in result)
+            {
+                if (photo.Orientation == PhotoOrientation.Horizontal)
+                {
+                    List<Photo>  photosforSlide = new List<Photo>();
+                    photosforSlide.Add(photo);
+                    Slides.Add(new Slide(photosforSlide));
+                }
+            }
+
 
 			var writer = new OutputFileWriter();
-			writer.WriteOutput(slides, outputPath);
+			writer.WriteOutput(Slides, outputPath);
 
             Console.ReadLine();
         }
